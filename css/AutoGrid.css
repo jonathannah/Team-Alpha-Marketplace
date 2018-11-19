@@ -1,0 +1,164 @@
+@charset "UTF-8";
+/* CSS Document */
+
+{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-family: Arial;
+}
+
+/* Center website */
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 50px;
+    word-break: break-all;
+}
+
+.row {
+    margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column (if you want) */
+.row,
+.row > .column {
+    padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 280px;
+}
+
+/* Clear floats after rows */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content */
+.content {
+    background-color: white;
+    padding: 10px;
+}
+
+.wide_row {
+    margin: 8px -16px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+    .column {
+        width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+div {
+    box-sizing: border-box;
+    width: 100%;
+}
+.infiniteContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    height: 10%;
+    overflow-x: auto;
+    white-space: nowrap;
+
+}
+
+.infiniteCell {
+    flex: fit-content;
+    padding: 10px;
+    display: inline-block;
+    width: 220px;
+
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px;
+    background: transparent;
+}
+
+.cell {
+    display: flex;
+    flex: fit-content;
+    padding: 10px;
+    width: 220px;
+}
+
+.cell2 {
+    display: flex;
+    flex: fit-content;
+    padding: 10px;
+    width: 20%;
+}
+
+.data {
+    justify-content: center;
+    white-space: normal;
+}
+
+@media only screen and (max-width: 640px) {
+
+    #cell2 {
+        flex-direction: row;
+        position: static;
+        height: 100px;
+    }
+
+    #cell4 { display: none; }
+
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .cell {
+        flex: 100%;
+    }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+    .container {
+        position: relative;
+    }
+
+    #cell1 {
+        flex: 0 0 66%;
+    }
+
+    #cell2 {
+        flex-direction: column;
+        right: 10px;
+        position: absolute;
+        width: 33%;
+        height: calc(100% - 20px);
+    }
+
+    #cell3 {
+        flex:  0 0 66%;
+    }
+
+    #cell4 { display: none;}
+}
