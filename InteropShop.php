@@ -8,6 +8,11 @@ include_once 'lib/Interoperability.php';
 //$siteName = utf8_decode($_GET["feedName"]);
 //$siteUri= utf8_decode($_GET["feedUri"]);
 
+session_start();
+$_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
+
+session_write_close();
+
 $userServers = array();
 
 if((isset($siteName) && strlen($siteName) > 0) && (isset($siteUri) && strlen($siteUri) > 0)){

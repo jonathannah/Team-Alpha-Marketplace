@@ -4,9 +4,7 @@ include_once "lib/Cookies.php";
 include_once 'lib/DBHelper.php';
 include_once 'lib/User.php';
 $dbh_hdr = new DBHelper();
-session_start();
 
-session_write_close();
 ?>
 
 
@@ -74,39 +72,45 @@ session_write_close();
     }
 </script>
 
-<div class="form-popup" id="createAccountForm" align="center" style="width: 100%">
-    <form action="CreateAccount.php" method="post" class="form-container" style="width: 100%">
-        <h1>Login</h1>
+<div class="form-popup" id="createAccountForm" align="center" width="30%">
+    <form action="CreateAccount.php" method="post" class="form-container" >
+        <h2>Login</h2>
+        <myDiv>
+            <input type="text" id="firstName" name="firstName" placeholder="first name" style="margin-right: 5px"/>
+            <input type="text" id="lastName" name="lastName" placeholder="last name"/>
 
-        <tr c>
-            <td >
-                <input type="text" placeholder="Enter First Name" placeholder="First Name" name="firstName" required >
-            </td>
-            <td >
-                <input type="text" placeholder="Enter Last Name" placeholder="Last Name" name="lastName" required>
-            </td>
-        </tr>
-        <div></div>
-        <input type="text" placeholder="Enter Email" name="email" required>
-        <input type="text" placeholder="Enter Address" name="addr" required>
-        <input type="text" placeholder="Apartment" name="apt" >
-        <input type="text" placeholder="City" name="city" required>
-        <input type="text" placeholder="State" name="state" required>
-        <input type="text" placeholder="Zipcode" name="zip" required>
-        <input type="text" placeholder="Home Phone" name="phone" required>
-        <input type="text" placeholder="Cell Phone" name="cellPhone" required>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <input type="password" placeholder="Confirm Password" name="psw_c" onblur="confirmPass()" required>
+        </myDiv>
+        <myDiv>
+            <input type="text" id="email" name="email" placeholder="email"/>
+        </myDiv>
+        <myDiv>
+            <input type="text" id="addr" name="addr" placeholder="address"  style="margin-right: 5px"/>
+            <input type="text" id="apt" name="apt" placeholder="apt" style="width: 15%"/>
+        </myDiv>
+        <myDiv>
+            <input type="text" id="city" name="city" placeholder="city"  style="margin-right: 5px; width: 200px%;"/>
+            <input type="text" id="state" name="state" placeholder="state" style="width: 10%"/>
+            <input type="text" id="zip" name="zip" placeholder="zipcode" style="margin-left: 5px; width: 20%;"/>
+        </myDiv>
+        <myDiv>
+            <input type="text" id="phone" name="phone" placeholder="home phone"  style="margin-right: 5px"/>
+            <input type="text" id="cellPhone" name="cellPhone" placeholder="cell phone"/>
+        </myDiv>
+        <myDiv>
+            <input type="text" id="psw" name="psw" placeholder="password"  style="margin-right: 5px"/>
+            <input type="text" id="psw_c" name="psw_c" placeholder="re-enter password"/>
+        </myDiv>
+        <br>
 
         <input type="submit" class="btn" value="Create Account">
-        <input type="button" class="btn cancel" onclick="closeCreateAccountForm()" value="Close">
+        <input type="button" class="btn cancel" style="height: " onclick="closeCreateAccountForm()" value="Close">
     </form>
 </div>
 
 
 <script>
     function openCreateAccountForm() {
-        document.getElementById("createAccountForm").style.display = "block";
+        document.getElementById("createAccountForm").style.display = "flex";
     }
     function closeCreateAccountForm() {
         document.getElementById("createAccountForm").style.display = "none";
@@ -136,12 +140,12 @@ session_write_close();
                 echo '<a href="TeamAlphaMain.php">Team Alpha Market</a>';
             }
             else{
-                echo 'Team Alpha';
+                echo 'Team Alpha Market';
             }
             ?>
             <br>
         </hd1>
-        <hd2>&lt;Insert Clever Tagline here!&gt;<br><br></hd2>
+        <hd2>&lt;The best place for shopping!&gt;<br><br></hd2>
     </logo>
 
     <topMenus>
@@ -149,6 +153,7 @@ session_write_close();
         $user = User::fromCookie();
 
         if($user != null) {
+            //error_log($user->toString());
             $isAdmin = $user->group == "Administrator";
             ?>
             <div class="dropdown">

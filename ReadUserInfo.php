@@ -18,9 +18,13 @@ include_once 'lib/DBHelper.php';
 
 $dbh = new DBHelper();
 
-$uToken = htmlspecialchars($_GET["userToken"]);
+$uToken = $_GET["userToken"];
+
+error_log("Read user for token: ".$uToken);
 
 $user = User::fromToken($uToken);
+
+error_log($user->toString());
 
 $ret = array();
 

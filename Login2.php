@@ -1,7 +1,8 @@
 <?php
 
-include 'lib/DBHelper.php';
-include 'lib/Cookies.php';
+include_once 'lib/DBHelper.php';
+include_once 'lib/Cookies.php';
+include_once 'lib/User.php';
 
 session_start();
 
@@ -9,8 +10,8 @@ $dbh = new DBHelper();
 
 $msg = "hmmm!";
 
-$uname = htmlspecialchars($_GET["uname"]);
-$upwd = htmlspecialchars($_GET["psw"]);
+$uname = $_GET["uname"];
+$upwd = $_GET["psw"];
 
 
 if(isset($uname) AND isset($upwd)) {
@@ -30,6 +31,7 @@ if(isset($uname) AND isset($upwd)) {
         User::setCookie($userToken);
          //header("Refresh:$secondsWait");
         $msg = "Login successful: ".$uname.", ".$pwd;
+        error_log($msg);
     } else {
         $msg = "The email '$uname' or password '$upwd' you entered is not valid pwd ($pwd)";
         error_log("Login Error: ".$msg);

@@ -16,8 +16,8 @@ $dbh = new DBHelper();
 $msg = "hmmm!";
 
 if(isset($_POST['email']) AND isset($_POST['psw'])) {
-    $query = "SELECT firstName, lastName, emailAddress, groupID, password FROM TeamAlphaMasrket.User WHERE emailAddress='{$_POST['email']}' ";
-    $result = mysqli_query($conn, $query) or die("The email or password you entered is not valid");
+    $query = "SELECT firstName, lastName, emailAddress, groupID, password FROM TeamAlphaMarket.User WHERE emailAddress='{$_POST['email']}' ";
+    $result = $dbh->query($query) or die("The email or password you entered is not valid");
 
     $fname = $_POST['firstName'];
     $lname = $_POST['lastName'];
@@ -46,7 +46,7 @@ if(isset($_POST['email']) AND isset($_POST['psw'])) {
 
         $query = $add." ".$values;
         error_log($query);
-        if ($conn->query($query) != TRUE) {
+        if ($dbh->query($query) != TRUE) {
             $msg += "Error: " + $add + "<br>" + $conn->error;
         }
         else {

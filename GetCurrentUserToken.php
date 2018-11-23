@@ -3,7 +3,7 @@
 include_once 'lib/User.php';
 
 
-$returnAddress = htmlspecialchars($_GET["retAddr"]);
+$returnAddress = $_GET["retAddr"];
 
 
 $uToken = User::currentToken();

@@ -27,16 +27,24 @@ class User
     public static function fromQuery($uid)
     {
         $dbh = new DBHelper();
-        $query = "SELECT * FROM  User WHERE emailAddress = '$uid'";
+        $query = "SELECT * FROM  User WHERE LOWER(emailAddress) = LOWER('$uid')";
+        //error_log($query);
         $result = $dbh->query($query);
 
         $row = mysqli_fetch_array($result);
-        return self::fromRow($row);
-        $dbh->close();
+
+        if($row != null) {
+            return self::fromRow($row);
+            $dbh->close();
+        }
+
+        error_log("No user for uid: ".$uid);
+        return null;
     }
 
     public static function fromRow($row)
     {
+        //error_log(print_r($row,true));
         $user = new User();
 
         $user->fname = $row["firstName"];
@@ -57,14 +65,19 @@ class User
     }
 
     static function fromToken($token){
+        //error_log("User::fromToken(".$token.")");
         $dbh = new DBHelper();
         $query = "SELECT userId FROM UserSession WHERE sessionID = $token";
         $result = $dbh->query($query);
 
         if($result->num_rows > 0){
-            return self::fromQuery(mysqli_fetch_array($result)["userId"]);
+            $uRec = mysqli_fetch_array($result);
+            $uId = $uRec["userId"];
+            //error_log("UID: ".$uId);
+            return self::fromQuery($uId);
         }
 
+        //error_log("No user found for: ".$token);
         return null;
     }
 
@@ -73,7 +86,7 @@ class User
         $ret = array();
 
         $ret["firstName"] = $this->fname;
-        $ret["lastNasme"] = $this->lname;
+        $ret["lastName"] = $this->lname;
         $ret["emailAddress"] = $this->email;
         $ret["password"] = $this->password; // need to use a SHA
         $ret["streetAddress"] = $this->address;
@@ -121,6 +134,12 @@ class User
         setcookie(COOKIE_USER_TOKEN, "", 0, "/");
         $_COOKIE[COOKIE_USER_TOKEN] = "";
         session_write_close();
+    }
+
+    public function toString()
+    {
+        $ret = "User: ".$this->fname.", ".$this->lname.": ".$this->email;
+        return $ret;
     }
 
 }
