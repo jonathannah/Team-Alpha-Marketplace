@@ -4,34 +4,14 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-.main {
-    max-width: 1000px;
-    margin: auto;
-}
-
 /* Button used to open the contact form  */
-.open-button {
-    background-color: #555;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
-    right: 5%;
-}
 
 .form-popup {
     display: none;
-    top: 0%;
+    top: 0;
     border: 3px solid #f1f1f1;
     z-index: 9;
     height: auto;
-}
-
-myDiv {
-    display: flex; /* 2. display flex to the rescue */
-    flex-direction: row;
-    margin: 1px;
 }
 
 label, input {
@@ -83,9 +63,6 @@ label, input {
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-}
 
 /* Style The Dropdown Button */
 .dropbtn {
@@ -112,7 +89,7 @@ label, input {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -139,34 +116,7 @@ label, input {
 
 * {box-sizing: border-box;}
 
-.row1,
-.row1 > .column1,column2 {
-    padding: 8px;
-}
 /* Create two equal columns that floats next to each other */
-.column1 {
-    float: left;
-    padding: 10px;
-    horiz-align: left;
-    margin-left: 2%;
-}
-.column2 {
-    float: left;
-    width: 40%;
-    padding: 10px;
-    height: 100px; /* Should be removed. Only for demonstration */
-    horiz-align: left;
-    margin-left: 2%;
-}
-.column3 {
-    float: left;
-    width: 3%;
-    padding: 10px;
-    vertical-align: top;
-    child-align: right;
-    horiz-align: left;
-    margin-left: 2%;
-}
 
 /* Clear floats after the columns */
 .row:after {
@@ -176,26 +126,6 @@ label, input {
     height: 10%;
 }
 
-#green {
-    width: 15%;
-    height: 130px;
-    float: left;
-    margin: 5px;
-}
-#red {
-    width: 50%;
-    height: 130px;
-    margin-left: 15px;
-    margin: 5px;
-    float: left;
-    vertical-align: top;
-}
-#blue {
-    width: 15%;
-    height: 130px;
-    margin: 5px;
-    float: right;
-}
 .dropbtn {
     background-color: #4CAF50;
     color: white;
@@ -205,13 +135,6 @@ label, input {
     line-height: 2vh;
     font-size: 1.5vh;
  }
-
-.dropcartbtn {
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
 
 .container {
 
@@ -233,7 +156,7 @@ label, input {
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -284,7 +207,6 @@ topMenus {
     padding: 5px;
     height: 10vh;
     width: 30vw;
-
 }
 
 /* Style the footer */

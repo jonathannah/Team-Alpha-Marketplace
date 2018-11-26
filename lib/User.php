@@ -9,6 +9,8 @@
 include_once "DBHelper.php";
 include_once 'Cookies.php';
 
+define('URL_PARAM_UTOKEN',"userToken");
+
 class User
 {
     public $fname;
@@ -32,10 +34,10 @@ class User
         $result = $dbh->query($query);
 
         $row = mysqli_fetch_array($result);
+        $dbh->close();
 
         if($row != null) {
             return self::fromRow($row);
-            $dbh->close();
         }
 
         error_log("No user for uid: ".$uid);

@@ -46,13 +46,9 @@ if(isset($_POST['email']) AND isset($_POST['psw'])) {
 
         $query = $add." ".$values;
         error_log($query);
-        if ($dbh->query($query) != TRUE) {
-            $msg += "Error: " + $add + "<br>" + $conn->error;
-        }
-        else {
-            $hdr = "Location: $page";
-            header($hdr);
-        }
+        $dbh->query($query);
+        $hdr = "Location: $page";
+        header($hdr);
     }
     else if($pwd != $cpwd)
     {
@@ -83,6 +79,6 @@ if(isset($_POST['email']) AND isset($_POST['psw'])) {
 
 <?php
 //Step 4
-CloseCon($conn);
+$dbh->close();
 ?>
 

@@ -55,7 +55,7 @@ class TotalViews
         setcookie($this->viewName, $strVal, time() + (86400 * 30), "/");
     }
 
-    private function dump()
+    function dump()
     {
         $ak = array_keys($this->totalViews);
         $av = array_values($this->totalViews);

@@ -117,53 +117,53 @@ $dbh_hdr = new DBHelper();
     }
 </script>
 
-    <script>
-        function handleHelloMenu() {
-            openCreateAccountForm();
-            var dropdown = document.getElementById("notLoggedInOpts");
-            switch(dropdown.value) {
-                case 0:
-                    openLoginForm();
-                    break;
-                case 1:
-                    openCreateAccountForm();
-                    break;
-            }
+<script>
+    function handleHelloMenu() {
+        openCreateAccountForm();
+        var dropdown = document.getElementById("notLoggedInOpts");
+        switch(dropdown.value) {
+            case 0:
+                openLoginForm();
+                break;
+            case 1:
+                openCreateAccountForm();
+                break;
         }
-    </script>
-    <?php $fileList = get_included_files();?>
+    }
+</script>
+<?php $fileList = get_included_files();?>
     <thumbnail><img class="thumbNail" src="images/TeamAlpha.png" alt="" align="left"/></thumbnail>
     <logo>
-        <hd1>
-            <?php
+    <hd1>
+        <?php
             if(stripos($fileList[0], "TeamAlphaMain.php", 0) == false){
                 echo '<a href="TeamAlphaMain.php">Team Alpha Market</a>';
             }
             else{
                 echo 'Team Alpha Market';
             }
-            ?>
-            <br>
-        </hd1>
-        <hd2>&lt;The best place for shopping!&gt;<br><br></hd2>
+        ?>
+        <br>
+    </hd1>
+    <hd2>The best place for shopping!<br><br></hd2>
     </logo>
 
     <topMenus>
         <?php
-        $user = User::fromCookie();
+            $user = User::fromCookie();
 
-        if($user != null) {
-            //error_log($user->toString());
-            $isAdmin = $user->group == "Administrator";
-            ?>
-            <div class="dropdown">
-                <button class="dropbtn">Hello <?php echo $user->fname; ?></button>
-                <div class="dropdown-content">
-                    <a href="LogOff.php">Log Out</a>
+            if($user != null) {
+                //error_log($user->toString());
+                $isAdmin = $user->group == "Administrator";
+                ?>
+                <div class="dropdown">
+                    <button class="dropbtn">Hello <?php echo $user->fname; ?></button>
+                    <div class="dropdown-content">
+                        <a href="LogOff.php">Log Out</a>
 
+                    </div>
                 </div>
-            </div>
-        <?php } else { ?>
+            <?php } else { ?>
             <div class="dropdown">
                 <button class="dropbtn">Login/Sign-up</button>
                 <div id="notLoggedInOpts" class="dropdown-content" >
@@ -175,5 +175,9 @@ $dbh_hdr = new DBHelper();
 
     </topMenus>
 
-    <?php $dbh_hdr->close(); ?>
+    <?php
+    $dbh_hdr->close();
+?>
+
+<div style="clear: both"><br></div>
 

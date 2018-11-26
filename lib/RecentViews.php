@@ -5,7 +5,7 @@
  * Date: 11/1/18
  * Time: 8:11 AM
  */
-include_once 'lib/Cookies.php';
+include_once 'Cookies.php';
 
 define('MAX_RVIEWS', 5);
 
