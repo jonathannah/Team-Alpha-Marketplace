@@ -12,13 +12,15 @@ class TeamEndPoints
     public $baseUrl;
     public $readProductsUrl;
     public $rateProductUrl;
+    public $topFiveUrl;
 
-    public function __construct($name, $baseUrl, $readProductsUrl, $rateProductUrl)
+    public function __construct($name, $baseUrl, $readProductsUrl, $rateProductUrl, $topFiveUrl)
     {
         $this->name = $name;
         $this->baseUrl = $baseUrl;
         $this->readProductsUrl = $readProductsUrl;
         $this->rateProductUrl = $rateProductUrl;
+        $this->topFiveUrl = $topFiveUrl;
     }
 
     public function getRateProductUrl($productCode, $uToken){
@@ -35,13 +37,15 @@ class TeamEndPoints
             "The Beanz Products",
             "http://roncabeanz.com",
             "http://roncabeanz.com/Roncabeanz/ReadProducts.php",
-            "http://roncabeanz.com/Roncabeanz/RateProduct.php"
+            "http://roncabeanz.com/Roncabeanz/RateProduct.php",
+            ""
         ));
         array_push(TeamEndPoints::$userServers, new TeamEndPoints
         (
             "Think Full Stack Products",
             "http://www.thinkinfullstack.com",
             "http://www.thinkinfullstack.com/project/apiproducts.php",
+            "",
             ""
         ));
 
