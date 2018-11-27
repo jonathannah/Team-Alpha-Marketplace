@@ -7,23 +7,13 @@ include_once 'lib/Interoperability.php';
 include_once 'lib/UrlHelper.php';
 include_once 'lib/Product.php';
 
-//$siteName = utf8_decode($_GET["feedName"]);
-//$siteUri= utf8_decode($_GET["feedUri"]);
 
 session_start();
 $_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
 
 session_write_close();
 
-$userServers = array();
-
-if((isset($siteName) && strlen($siteName) > 0) && (isset($siteUri) && strlen($siteUri) > 0)){
-    array_push($userServers, new TeamEndPoints($siteName, $siteUri));
-}
-else {
-    array_push($userServers, new TeamEndPoints("The Beanz Products", "http://roncabeanz.com/Roncabeanz/ReadProducts.php"));
-    array_push($userServers, new TeamEndPoints("Think Full Stack Products", "http://www.thinkinfullstack.com/project/apiproducts.php"));
-}
+$userServers = TeamEndPoints::$userServers;
 
 $mktProducts = array();
 $mtkProductMap = array();
@@ -67,9 +57,9 @@ $mtkProductMap = array();
 
 <?php
 //Step2
-foreach ($userServers as $curUSrv) {
+foreach ($userServers as $curUsrv) {
     $ch = new CurlHelper();
-    $result = $ch->get($curUSrv->requestUrl);
+    $result = $ch->get($curUsrv->readProductsUrl);
     $products = json_decode($result, TRUE);
 
     ?>
@@ -79,7 +69,7 @@ foreach ($userServers as $curUSrv) {
     </div>
 
     <div class="row">
-        <h2><?php echo $curUSrv->name; ?></h2>
+        <h2><?php echo $curUsrv->name; ?></h2>
     </div>
 
 
