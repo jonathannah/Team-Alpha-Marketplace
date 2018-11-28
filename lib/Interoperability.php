@@ -24,7 +24,11 @@ class TeamEndPoints
     }
 
     public function getRateProductUrl($productCode, $uToken){
-        return $this->rateProductUrl."?productCode=$productCode&userToken=$uToken";
+        if($this->rateProductUrl != "") {
+            return $this->rateProductUrl . "?productCode=$productCode&userToken=$uToken";
+        }
+
+        return "#";
     }
 
     public static $userServers;
