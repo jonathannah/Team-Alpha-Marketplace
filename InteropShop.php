@@ -94,7 +94,7 @@ foreach ($userServers as $curUsrv) {
 
             ?>
             <div class="infiniteCell">
-                <a href="<?php echo $ratingUrl;?>">
+                <a href="CallData.php?calltype=rateProduct&siteUrl=<?php echo $curUsrv->baseUrl;?>&callto=<?php echo $ratingUrl;?>">
                     <div class="star-ratings-css" style="margin-bottom: 10px">
                         <div class="star-ratings-css-top" style="width: <?php echo$curProduct->averageRating*20;?>%">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -102,7 +102,7 @@ foreach ($userServers as $curUsrv) {
                         <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
                 </a>
-                <a href= "<?php echo $prodUrl; ?>">
+                <a href= "CallData.php?calltype=viewProduct&siteUrl=<?php echo $curUsrv->baseUrl;?>&callto=<?php echo $prodUrl; ?>">
                      <span class="data"> <img src="<?php echo $thumbnail; ?>" alt="<?php $curProduct->name ?>" style="width:200px"></span>
                     <span class="data"> <h3><?php echo $curProduct->name ?></h3></span>
                 </a>
