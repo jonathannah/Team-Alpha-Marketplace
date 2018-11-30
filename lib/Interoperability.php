@@ -38,15 +38,15 @@ class TeamEndPoints
         TeamEndPoints::$userServers = array();
         array_push(TeamEndPoints::$userServers, new TeamEndPoints
         (
-            "The Beanz Products",
-            "http://roncabeanz.com",
-            "http://roncabeanz.com/Roncabeanz/ReadProducts.php",
-            "http://roncabeanz.com/Roncabeanz/RateProduct.php",
-            ""
+            "Roncabeanz",
+            "http://www.roncabeanz.com",
+            "http://www.roncabeanz.com/Roncabeanz/ReadProducts.php",
+            "http://www.roncabeanz.com/Roncabeanz/RateProduct.php",
+            "http://www.roncabeanz.com/Roncabeanz/MostPopularProducts.php?maxProd=5"
         ));
         array_push(TeamEndPoints::$userServers, new TeamEndPoints
         (
-            "Think Full Stack Products",
+            "Think Full Stack",
             "http://www.thinkinfullstack.com",
             "http://www.thinkinfullstack.com/project/apiproducts.php",
             "",

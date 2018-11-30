@@ -80,6 +80,9 @@ foreach ($userServers as $curUsrv) {
             $curProduct = Product::fromJSON($curJSONProduct);
 
             $prodUrl = UrlHelper::addparameterIfSet($curProduct->clickTo, URL_PARAM_UTOKEN, User::currentToken());
+            $prodUrl = urlencode($prodUrl);
+
+            $siteUrl = urlencode($curUsrv->baseUrl);
 
             $thumbnail = $curProduct->thumbnail;
             array_push($mktProducts, $curProduct->name);
@@ -89,20 +92,20 @@ foreach ($userServers as $curUsrv) {
             $ratingUrl = "#";
 
             if(User::currentToken() != null){
-                $ratingUrl = $curUsrv->getRateProductUrl($curProduct->productCode, User::currentToken());
+                $ratingUrl = urlencode($curUsrv->getRateProductUrl($curProduct->productCode, User::currentToken()));
             }
 
             ?>
             <div class="infiniteCell">
-                <a href="CallData.php?calltype=rateProduct&siteUrl=<?php echo $curUsrv->baseUrl;?>&callto=<?php echo $ratingUrl;?>">
+                <a href="CallData.php?calltype=rateProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $ratingUrl;?>">
                     <div class="star-ratings-css" style="margin-bottom: 10px">
-                        <div class="star-ratings-css-top" style="width: <?php echo$curProduct->averageRating*20;?>%">
+                        <div class="star-ratings-css-top" style="width: <?php echo$curProduct->averageRating*20;?>%" title="Rate this product">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
                         <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
                 </a>
-                <a href= "CallData.php?calltype=viewProduct&siteUrl=<?php echo $curUsrv->baseUrl;?>&callto=<?php echo $prodUrl; ?>">
+                <a href= "CallData.php?calltype=viewProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $prodUrl; ?>">
                      <span class="data"> <img src="<?php echo $thumbnail; ?>" alt="<?php $curProduct->name ?>" style="width:200px"></span>
                     <span class="data"> <h3><?php echo $curProduct->name ?></h3></span>
                 </a>

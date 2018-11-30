@@ -11,8 +11,11 @@ include_once 'lib/DBHelper.php';
 $user = User::fromCookie();
 
 $callToUrl = $_GET["callto"];
+$callToUrl = urldecode($callToUrl);
 $callType = $_GET["calltype"];
 $site = $_GET["siteUrl"];
+$site = urldecode($site);
+$productCode = $_GET["productCode"];
 
 if($user != null || $callType != "rateProduct") {
     if($user == null){
@@ -23,7 +26,7 @@ if($user != null || $callType != "rateProduct") {
     }
 
     $safeUrl = urlencode($site);
-    $query = "INSERT INTO TeamAlphaMarket.ActivityTracking (userId, site, type) VALUES ('$userId', '$safeUrl', '$callType')";
+    $query = "INSERT INTO TeamAlphaMarket.ActivityTracking (userId, productCode, site, type) VALUES ('$userId', '$productCode', '$safeUrl', '$callType')";
 
 
     error_log($query);

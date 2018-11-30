@@ -16,25 +16,32 @@ $upwd = $_GET["psw"];
 
 if(isset($uname) AND isset($upwd)) {
     $query = "SELECT firstName, lastName, emailAddress, groupID, password FROM TeamAlphaMarket.User WHERE LOWER(emailAddress)=LOWER('$uname') ";
+    error_log($query);
     $result = $dbh->query($query);
 
-    $fields = mysqli_fetch_fields($result);
+    if($result->num_rows == 0){
+        error_log("Invalid login for user: ($uname, $upwd");
+    }
+    else {
 
-    $row = mysqli_fetch_array($result);
-    $pwd = $row["password"];
+        $fields = mysqli_fetch_fields($result);
+
+        $row = mysqli_fetch_array($result);
+        $pwd = $row["password"];
 
 
-    if ($upwd == $pwd) {
-        $query = "INSERT INTO UserSession (userId) VALUES ('$uname')";
-        $dbh->query($query);
-        $userToken = $dbh->lastInsertId();
-        User::setCookie($userToken);
-         //header("Refresh:$secondsWait");
-        $msg = "Login successful: ".$uname.", ".$pwd;
-        error_log($msg);
-    } else {
-        $msg = "The email '$uname' or password '$upwd' you entered is not valid pwd ($pwd)";
-        error_log("Login Error: ".$msg);
+        if ($upwd == $pwd) {
+            $query = "INSERT INTO UserSession (userId) VALUES ('$uname')";
+            $dbh->query($query);
+            $userToken = $dbh->lastInsertId();
+            User::setCookie($userToken);
+            //header("Refresh:$secondsWait");
+            $msg = "Login successful: " . $uname . ", " . $pwd;
+            error_log($msg);
+        } else {
+            $msg = "The email '$uname' or password '$upwd' you entered is not valid pwd ($pwd)";
+            error_log("Login Error: " . $msg);
+        }
     }
 }
 

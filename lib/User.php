@@ -107,6 +107,7 @@ class User
     static function currentToken()
     {
         if (isset($_COOKIE[COOKIE_USER_TOKEN])) {
+            //error_log("\$_COOKIE[".COOKIE_USER_TOKEN."] = ".$_COOKIE[COOKIE_USER_TOKEN]);
             return $_COOKIE[COOKIE_USER_TOKEN];
         }
 
@@ -120,9 +121,9 @@ class User
 
     static function fromCookie()
     {
-        if (isset($_COOKIE[COOKIE_USER_TOKEN])) {
-            $userToken = $_COOKIE[COOKIE_USER_TOKEN];
-            return self::fromToken($userToken);
+        $uToken = self::currentToken();
+        if ($uToken != null) {
+             return self::fromToken($uToken);
         }
 
         return null;
