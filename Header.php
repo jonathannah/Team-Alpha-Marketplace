@@ -149,10 +149,17 @@ $dbh_hdr = new DBHelper();
             if($user != null) {
                 //error_log($user->toString());
                 $isAdmin = $user->group == "Administrator";
+                $_SESSION['admin'] = $isAdmin;
                 ?>
                 <li class="parent"><a href="#">Hello <?php echo $user->fname; ?></a>
                 <ul>
                     <li><a href="LogOff.php">Log Out</a></li>
+                    <?php
+                        if($isAdmin){
+                            echo '<li><a href="ShowCustomers.php">Mangage Customers</a></li>';
+                            echo '<li><a href="ShowTracking.php">Show Tracking Information</a></li>';
+                        }
+                        ?>
                 </ul>
             <?php } else { ?>
                 <li class="parent"><a href="#">Login / Sign-up</a>

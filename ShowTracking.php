@@ -112,51 +112,67 @@ session_write_close();
 </script>
 
 <div class="container">
-    <?php include 'Header.php'; ?>
+    <?php
+        session_start();
+        include 'Header.php';
+    ?>
 </div>
 <div class="row"></div>
-<h1>User Activity</h1>
 
 <?php
-//Step2
-$query = "SELECT id, eventTime, type, userid, site, productCode FROM TeamAlphaMarket.ActivityTracking WHERE 1 ORDER BY id";
-
-//Step3
-$result = $dbh->query($query);
-$num_fields = mysqli_num_fields($result);
-$fields = mysqli_fetch_fields($result);
-//$row = mysqli_fetch_array($result);
-?>
 
 
-<div><br><br></div>
-<table id="ProductTable">
-    <tr>
-        <?php for ($i = 0; $i < $num_fields; $i++){ ?>
-            <th>
-                <?php
-                    echo '<a href="#" onClick="sortTable(', $i, ')">', $fields[$i]->name, '</a>';
-                ?>
-            </th>
-        <?php } ?>
-    </tr>
-    <?php while ($row = mysqli_fetch_array($result)) {?>
+$isAdmin = $_SESSION['admin'];
+if(!$isAdmin || false){ ?>
+    <h1> <br><br> You do not have permission to view this page!</h1> <?php
+}
+else {
+    ?>
+    <h1>User Activity</h1>
+
+    <?php
+    //Step2
+    $query = "SELECT id, eventTime, type, userid, site, productCode FROM TeamAlphaMarket.ActivityTracking WHERE 1 ORDER BY id";
+
+    //Step3
+    $result = $dbh->query($query);
+    $num_fields = mysqli_num_fields($result);
+    $fields = mysqli_fetch_fields($result);
+    //$row = mysqli_fetch_array($result);
+    ?>
+
+
+    <div><br><br></div>
+    <table id="ProductTable">
         <tr>
-            <td><?php echo $row["id"];?></td>
-            <td><?php echo $row["eventTime"];?></td>
-            <td><?php echo $row["type"];?></td>
-            <td><?php echo $row["userid"];?></td>
-            <td><?php echo urldecode($row["site"]);?></td>
-            <td><?php echo $row["productCode"];?></td>
+            <?php for ($i = 0; $i < $num_fields; $i++) { ?>
+                <th>
+                    <?php
+                    echo '<a href="#" onClick="sortTable(', $i, ')">', $fields[$i]->name, '</a>';
+                    ?>
+                </th>
+            <?php } ?>
         </tr>
     <?php } ?>
+    <?php while ($row = mysqli_fetch_array($result)) { ?>
+            <tr>
+                <td><?php echo $row["id"]; ?></td>
+                <td><?php echo $row["eventTime"]; ?></td>
+                <td><?php echo $row["type"]; ?></td>
+                <td><?php echo $row["userid"]; ?></td>
+                <td><?php echo urldecode($row["site"]); ?></td>
+                <td><?php echo $row["productCode"]; ?></td>
+            </tr>
+        <?php } ?>
 </table>
-
+        
 <?php include 'Footer.php'; ?>
 
 <?php
 //Step 4
 $dbh->close();
 ?>
+
+
 
 </body>
