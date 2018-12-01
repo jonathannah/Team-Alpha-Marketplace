@@ -35,7 +35,6 @@ $mtkProductMap = array();
     <!--Template-->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/print.css" media="print">
-    <script src="js/jquery-1.6.4.min.js"></script>
     <script src="js/custom.js"></script>
 
     <style>
@@ -56,7 +55,8 @@ $mtkProductMap = array();
 
 <div class="ui-widget">
     <label for="searchProd" style="margin-top: 15px; margin-bottom: 10px">Search Our Marketplace: </label>
-    <input id="searchProd", placeholder="Search Products", style="width: 25%">
+    <input id="searchProd", placeholder="Search Products", style="width: 25%"/
+    >
 </div>
 
 
