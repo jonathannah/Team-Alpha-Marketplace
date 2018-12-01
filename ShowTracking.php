@@ -11,7 +11,7 @@ $dbh = new DBHelper();
 
 <head>
     <title>User Tracking History</title>
-    <link rel="stylesheet" href="css/TeamAlpha_style.css" type="text/css" />
+    <!--<link rel="stylesheet" href="css/TeamAlpha_style.css" type="text/css" />-->
     <link href="css/Header.css" rel="stylesheet" type="text/css">
     <!--Template-->
     <link rel="stylesheet" href="css/main.css">
@@ -111,12 +111,13 @@ session_write_close();
 
 </script>
 
-<div class="container">
-    <?php
-        session_start();
-        include 'Header.php';
-    ?>
-</div>
+<?php
+    session_start();
+    include 'Header.php';
+?>
+
+<div id="content">
+  <div class="wrap clearFix">
 <div class="row"></div>
 
 <?php
@@ -165,7 +166,9 @@ else {
             </tr>
         <?php } ?>
 </table>
-        
+</div>
+</div>
+
 <?php include 'Footer.php'; ?>
 
 <?php
