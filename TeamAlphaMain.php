@@ -10,12 +10,19 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="css/Header.css" rel="stylesheet" type="text/css">
+    
     <link href="css/AutoGrid.css" rel="stylesheet" type="text/css">
+    <!--Replace with the new template
     <link href="css/TeamAlpha_style.css" rel="stylesheet" type="text/css">
+    -->
     <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
-
     <link href="css/StarRating.css" rel="stylesheet" type="text/css">
-
+    <!--Template-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/custom.js"></script>
+    
 </head>
 
 <body>
@@ -42,21 +49,12 @@
 
     ?>
 
+    <?php include 'Header.php'; ?>
 
+<div id="content">
+  <div class="wrap clearFix">
 
-    <div class="wrapperContainer">
-        <?php include 'Header.php'; ?>
-    </div>
-    <div>
-        <nav class="secondary_header" id="menu">
-            <ul>
-                <li><a class="nav" href="InteropShop.php">Shop</li>
-             </ul>
-        </nav>
-    </div>
-    <div>&nbsp;</div>
-
-     <div class="row">
+    <div class="row">
         <h2>Hot products at Team Alpha Market</h2>
     </div>
 
@@ -118,12 +116,8 @@
             </div>
             <?php
         }
-
     ?>
     </div>
-
-    <div></div>
-
 
      <?php
      // handle per-team popular products
@@ -183,9 +177,11 @@
             </div>
             <?php
         }
-
         ?>
+    </div>
+</div>
 
+<?php include 'Footer.php'; ?>
     <?php
 
         $dbh->close();

@@ -131,51 +131,58 @@ $dbh_hdr = new DBHelper();
         }
     }
 </script>
-<?php $fileList = get_included_files();?>
-    <thumbnail><img class="thumbNail" src="images/TeamAlpha.png" alt="" align="left"/></thumbnail>
-    <logo>
-    <hd1>
-        <?php
-            if(stripos($fileList[0], "TeamAlphaMain.php", 0) == false){
-                echo '<a href="TeamAlphaMain.php">Team Alpha Market</a>';
-            }
-            else{
-                echo 'Team Alpha Market';
-            }
-        ?>
-        <br>
-    </hd1>
-    <hd2>The best place for shopping!<br><br></hd2>
-    </logo>
 
-    <topMenus>
-        <?php
+<?php $fileList = get_included_files();?>
+<header class="clearFix">
+  <div class="wrap"> 
+      <a id="logo" href="TeamAlphaMain.php">
+          <img class="thumbNail" src="images/TeamAlpha.png" width="160px" height="160px"/>
+        </a>
+    <hr>
+    <nav>
+      <div id="nav"> <strong>Navigation</strong>
+        <ul>
+          <li class="active"> <a href="TeamAlphaMain.php">Home</a> </li>
+          <?php
             $user = User::fromCookie();
 
             if($user != null) {
                 //error_log($user->toString());
                 $isAdmin = $user->group == "Administrator";
                 ?>
-                <div class="dropdown">
-                    <button class="dropbtn">Hello <?php echo $user->fname; ?></button>
-                    <div class="dropdown-content">
-                        <a href="LogOff.php">Log Out</a>
-
-                    </div>
-                </div>
+                <li class="parent"><a href="#">Hello <?php echo $user->fname; ?></a>
+                <ul>
+                    <li><a href="LogOff.php">Log Out</a></li>
+                </ul>
             <?php } else { ?>
-            <div class="dropdown">
-                <button class="dropbtn">Login/Sign-up</button>
-                <div id="notLoggedInOpts" class="dropdown-content" >
-                     <a href="#" onclick="document.getElementById('id01').style.display='block'">Login</a>
-                    <a href="#" onClick="openCreateAccountForm()">Create Account</a>
-                </div>
+                <li class="parent"><a href="#">Login / Sign-up</a>
+                <ul>
+                <li><a href="#" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+                <li><a href="#" onClick="openCreateAccountForm()">Create Account</a></li>
+                </ul>
             </div>
         <?php } ?>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<hr>
+<div id="intro">
+  <div class="inner">
+    <div class="wrap clearFix">
+      <h1>Team Alpha Market. <strong>Worldwide.</strong></h1>
+      <p>The best place for shopping! Competitive 8% commission rate with no minimum sales required with 15-day Return Cookie.
+Links to the nation’s largest online floral service organization.
+Regularly updated promotions and creative.
+Strong average conversion rate.</p>
+      <a href="InteropShop.php" class="button">Shop</a> </div>
+  </div>
+</div>
+<!-- / #intro -->
+<hr>
 
-    </topMenus>
-
-    <?php
+<?php
     $dbh_hdr->close();
 ?>
 

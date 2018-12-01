@@ -13,6 +13,11 @@ $dbh = new DBHelper();
     <title>User Tracking History</title>
     <link rel="stylesheet" href="css/TeamAlpha_style.css" type="text/css" />
     <link href="css/Header.css" rel="stylesheet" type="text/css">
+    <!--Template-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/custom.js"></script>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -146,6 +151,9 @@ $fields = mysqli_fetch_fields($result);
         </tr>
     <?php } ?>
 </table>
+
+<?php include 'Footer.php'; ?>
+
 <?php
 //Step 4
 $dbh->close();

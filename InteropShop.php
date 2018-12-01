@@ -32,10 +32,14 @@ $mtkProductMap = array();
     <link href="css/Header.css" rel="stylesheet" type="text/css">
     <link href="css/StarRating.css" rel="stylesheet" type="text/css">
 
+    <!--Template-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/custom.js"></script>
+
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
-
-
     </style>
 </head>
 <body>
@@ -47,6 +51,8 @@ $mtkProductMap = array();
 
 <?php include 'Header.php'; ?>
 
+<div id="content">
+  <div class="wrap clearFix">
 
 <div class="ui-widget">
     <label for="searchProd" style="margin-top: 15px; margin-bottom: 10px">Search Our Marketplace: </label>
@@ -120,6 +126,11 @@ foreach ($userServers as $curUsrv) {
 }
 
 ?>
+
+    </div>
+</div>
+
+<?php include 'Footer.php'; ?>
 
 <script>
     $( function() {
