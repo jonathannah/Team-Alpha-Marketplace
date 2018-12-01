@@ -16,7 +16,7 @@ session_write_close();
 $userServers = TeamEndPoints::$userServers;
 
 $mktProducts = array();
-$mtkProductMap = array();
+$mktProductMap = array();
 
 ?>
 
@@ -55,8 +55,7 @@ $mtkProductMap = array();
 
 <div class="ui-widget">
     <label for="searchProd" style="margin-top: 15px; margin-bottom: 10px">Search Our Marketplace: </label>
-    <input id="searchProd", placeholder="Search Products", style="width: 25%"/
-    >
+    <input id="searchProd", placeholder="Search Products", style="width: 25%"/>
 </div>
 
 
@@ -86,24 +85,31 @@ foreach ($userServers as $curUsrv) {
             $curProduct = Product::fromJSON($curJSONProduct);
 
             $prodUrl = UrlHelper::addparameterIfSet($curProduct->clickTo, URL_PARAM_UTOKEN, User::currentToken());
-            $prodUrl = urlencode($prodUrl);
-
             $siteUrl = urlencode($curUsrv->baseUrl);
-
+            $searchProdUrl = "CallData.php?calltype=searchProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=".urlencode($prodUrl);
+            $viewProdUrl = "CallData.php?calltype=viewProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=".urlencode($prodUrl);
             $thumbnail = $curProduct->thumbnail;
             array_push($mktProducts, $curProduct->name);
-            $mtkProductMap[$curProduct->name] = $prodUrl;
+
+            if(strpos($curProduct->name, "Burundi") != false){
+                error_log($curProduct->name);
+            }
+            $mktProductMap[$curProduct->name] = $searchProdUrl;
             $avgRating = $curProduct->averageRating * 20;
 
-            $ratingUrl = "#";
+            $rateProdUrl = "#";
 
-            if(User::currentToken() != null){
+            if(User::currentToken() != null && $curUsrv->rateProductUrl != ""){
                 $ratingUrl = urlencode($curUsrv->getRateProductUrl($curProduct->productCode, User::currentToken()));
+                $rateProdUrl = "CallData.php?calltype=rateProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=$ratingUrl";
+            }
+            else{
+                $rateProdUrl = $viewProdUrl;
             }
 
             ?>
             <div class="infiniteCell">
-                <a href="CallData.php?calltype=rateProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $ratingUrl;?>">
+                <a href="<?php echo $rateProdUrl;?>">
                     <div class="star-ratings-css" style="margin-bottom: 10px">
                         <div class="star-ratings-css-top" style="width: <?php echo$curProduct->averageRating*20;?>%" title="Rate this product">
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -111,7 +117,7 @@ foreach ($userServers as $curUsrv) {
                         <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     </div>
                 </a>
-                <a href= "CallData.php?calltype=viewProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $prodUrl; ?>">
+                <a href= "<?php echo $viewProdUrl; ?>">
                      <span class="data"> <img src="<?php echo $thumbnail; ?>" alt="<?php $curProduct->name ?>" style="width:200px"></span>
                     <span class="data"> <h3><?php echo $curProduct->name ?></h3></span>
                 </a>
@@ -146,7 +152,7 @@ foreach ($userServers as $curUsrv) {
         event.preventDefault();
         if (event.keyCode === 13) {
             var name = document.getElementById("searchProd").value;
-            var prodUrls = <?php echo json_encode($mtkProductMap); ?>;
+            var prodUrls = <?php echo json_encode($mktProductMap); ?>;
             var prodUrl = prodUrls[name];
             window.location.href = prodUrl;
         }

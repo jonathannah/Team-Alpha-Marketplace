@@ -124,7 +124,7 @@ session_write_close();
 
 
 $isAdmin = $_SESSION['admin'];
-if(!$isAdmin || false){ ?>
+if(!$isAdmin){ ?>
     <h1> <br><br> You do not have permission to view this page!</h1> <?php
 }
 else {

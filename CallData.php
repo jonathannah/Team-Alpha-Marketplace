@@ -25,6 +25,10 @@ if($user != null || $callType != "rateProduct") {
         $userId = $user->email;
     }
 
+    if($callType == "searchProduct"){
+        error_log(basename($_SERVER['REQUEST_URI']));
+    }
+
     $safeUrl = urlencode($site);
     $query = "INSERT INTO TeamAlphaMarket.ActivityTracking (userId, productCode, site, type) VALUES ('$userId', '$productCode', '$safeUrl', '$callType')";
 
@@ -34,6 +38,7 @@ if($user != null || $callType != "rateProduct") {
     $dbh = new DBHelper();
     $dbh->query($query);
     $hdr = "Location: $callToUrl";
+    error_log($hdr);
     header($hdr);
 }
 ?>

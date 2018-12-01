@@ -22,6 +22,78 @@
     <link rel="stylesheet" href="css/print.css" media="print">
     <script src="js/jquery-1.6.4.min.js"></script>
     <script src="js/custom.js"></script>
+
+    <style>
+        .fire {
+            animation: burn 1.5s linear infinite alternate;
+            -webkit-animation: burn 1.5s linear infinite alternate;
+            -moz-animation: burn 1.5s linear infinite alternate;
+            -ms-animation: burn 1.5s linear infinite alternate;
+        }
+
+        @keyframes burn {
+            from { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
+            45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
+            70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
+            to   { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
+        }
+
+        @-webkit-keyframes burn {
+            from { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
+            45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
+            70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
+            to   { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
+        }
+
+        @-moz-keyframes burn {
+            from { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
+            45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
+            70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
+            to   { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
+        }
+
+        @-ms-keyframes burn {
+            from { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
+            45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
+            70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
+            to   { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
+        }
+
+        .center {
+            position: absolute;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-family: 'AvenirNext-Heavy', 'Arial Black', sans-serif;
+            font-stretch: ultra-condensed;
+            font-size: 600%;
+            font-size: 12vmin;
+            font-weight: 900;
+            font-style: italic;
+            white-space: nowrap;
+            color: black;
+            text-decoration: none;
+        }
+
+        .center b {
+            display: block;
+            font-size: 3vh;
+            margin-top: -3%;
+            padding: 1% 7%;
+            font-family: monospace;
+            font-weight: normal;
+        }
+
+        .center:hover b {
+            color: white;
+            background-color: black;
+        }
+    </style>
     
 </head>
 
@@ -54,9 +126,10 @@
 <div id="content">
   <div class="wrap clearFix">
 
-    <div class="row">
-        <h2>Hot products at Team Alpha Market</h2>
-    </div>
+      <div style="font-size: 3.5vh">
+          <em class="fire">Hot Prod</em><em class="fire" style="animation-delay: .2s; -webkit-animation-delay: .2s; -moz-animation-delay: .2s; -ms-animation-delay: .2s;">ucts at </em><em class="fire" style="animation-delay: .4s; -webkit-animation-delay: .4s; -moz-animation-delay: .4s; -ms-animation-delay: .4s;">Team </em><em class="fire" style="animation-delay: .6s; -webkit-animation-delay: .6s; -moz-animation-delay: .6s; -ms-animation-delay: .6s;">Alpha </em><em class="fire" style="animation-delay: 1s; -webkit-animation-delay: 1s; -moz-animation-delay: 1s; -ms-animation-delay: 1s;">Market!</em>
+          <b></b>
+      </div>
 
     <?php
         // top products at TAM  This is the most popular product from each site
@@ -133,7 +206,7 @@
 
             ?>
             <div class="row">
-                <h2>Popular at <?php echo $curUsrv->name; ?></h2>
+                <h2 style="font-size: 2.5vh; margin-bottom: -10px">Popular at <?php echo $curUsrv->name; ?></h2>
             </div>
             <div class="infiniteContainer">
                 <?php

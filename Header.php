@@ -182,10 +182,10 @@ $dbh_hdr = new DBHelper();
   <div class="inner">
     <div class="wrap clearFix">
       <h1>Team Alpha Market. <strong>Worldwide.</strong></h1>
-      <p>The best place for shopping! Competitive 8% commission rate with no minimum sales required with 15-day Return Cookie.
-Links to the nation’s largest online floral service organization.
-Regularly updated promotions and creative.
-Strong average conversion rate.</p>
+        <p>
+            The best place for shopping!  Team Alpha Market vendors are highly rated, and all
+            purchases carry the Team Alpha 100% Satisfaction Guarantee<sup><a href="TAMGarantee.html" style="color: white; text-decoration: none">*</a></sup>.
+        </p>
       <a href="InteropShop.php" class="button">Shop</a> </div>
   </div>
 </div>
