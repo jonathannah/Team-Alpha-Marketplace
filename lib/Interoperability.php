@@ -48,11 +48,18 @@ class TeamEndPoints
         (
             "Think Full Stack",
             "http://www.thinkinfullstack.com",
-            "http://www.thinkinfullstack.com/project/apiproducts.php",
+            "http://www.thinkinfullstack.com/project/api/products.php",
             "",
-            ""
+            "http://www.thinkinfullstack.com/project/api/mostpopular.php?maxProd=5"
         ));
-
+        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        (
+            "The Whale Products",
+            "https://www.yarnix.com",
+            "http://yarnix.com/curlproduct/", 
+            "",
+            "https://yarnix.com/topfiveviewed/"
+        ));
     }
 }
 
