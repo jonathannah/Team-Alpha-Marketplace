@@ -60,6 +60,14 @@ class TeamEndPoints
             "",
             "https://yarnix.com/topfiveviewed/"
         ));
+        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        (
+            "The Crypto Products",
+            "http://www.boostshore.com/wp",
+            "http://www.boostshore.com/wp/curlproduct/",
+            "",
+            "http://www.boostshore.com/wp/topfive/"
+        ));
     }
 }
 
