@@ -129,7 +129,7 @@ if(!$isAdmin){ ?>
 }
 else {
     ?>
-    <h1>User Activity</h1>
+    <h1 style="color: black">User Activity</h1>
 
     <?php
     //Step2
