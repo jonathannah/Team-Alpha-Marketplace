@@ -17,13 +17,11 @@ $dbh_hdr = new DBHelper();
         </div>
 
         <div class="container">
-            <label for="uname"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="uname" required>
-
-            <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
-
             <button type="submit">Login</button>
+        </div>
+        <div class="container">
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -74,21 +72,20 @@ $dbh_hdr = new DBHelper();
 
 <div class="form-popup" id="createAccountForm" align="center" width="30%">
     <form action="CreateAccount.php" method="post" class="form-container" >
-        <h2>Login</h2>
+        <h2>Sign up</h2>
         <myDiv>
             <input type="text" id="firstName" name="firstName" placeholder="first name" style="margin-right: 5px"/>
             <input type="text" id="lastName" name="lastName" placeholder="last name"/>
-
         </myDiv>
         <myDiv>
             <input type="text" id="email" name="email" placeholder="email"/>
         </myDiv>
         <myDiv>
-            <input type="text" id="addr" name="addr" placeholder="address"  style="margin-right: 5px"/>
-            <input type="text" id="apt" name="apt" placeholder="apt" style="width: 15%"/>
+            <input type="text" id="addr" name="addr" placeholder="address"  style="margin-right: 5px"/>  
         </myDiv>
         <myDiv>
-            <input type="text" id="city" name="city" placeholder="city"  style="margin-right: 5px; width: 200px%;"/>
+            <input type="text" id="apt" name="apt" placeholder="apt" style="width: 15%"/>
+            <input type="text" id="city" name="city" placeholder="city"  style="margin-right: 5px; width: 20%;"/>
             <input type="text" id="state" name="state" placeholder="state" style="width: 10%"/>
             <input type="text" id="zip" name="zip" placeholder="zipcode" style="margin-left: 5px; width: 20%;"/>
         </myDiv>
@@ -103,7 +100,7 @@ $dbh_hdr = new DBHelper();
         <br>
 
         <input type="submit" class="btn" value="Create Account">
-        <input type="button" class="btn cancel" style="height: " onclick="closeCreateAccountForm()" value="Close">
+        <input type="button" class="btn cancel" onclick="closeCreateAccountForm()" value="Close">
     </form>
 </div>
 
@@ -143,6 +140,7 @@ $dbh_hdr = new DBHelper();
       <div id="nav"> <strong>Navigation</strong>
         <ul>
           <li class="active"> <a href="TeamAlphaMain.php">Home</a> </li>
+          <li class="active"> <a href="TeamAlpha.php">Team</a> </li>
           <?php
             $user = User::fromCookie();
 
