@@ -154,9 +154,9 @@ $dbh_hdr = new DBHelper();
 <?php $fileList = get_included_files();?>
 <header class="clearFix">
   <div class="wrap"> 
-      <a id="logo" href="TeamAlphaMain.php">
+    <a id="logo" href="TeamAlphaMain.php">
           <img class="thumbNail" src="images/TeamAlpha.png" width="160px" height="160px"/>
-        </a>
+    </a>
     <hr>
     <nav>
       <div id="nav"> <strong>Navigation</strong>
@@ -215,6 +215,7 @@ $dbh_hdr = new DBHelper();
         <div style="float: left">
             <a href="#" class="button">About</a>
         </div>
+    </div>
   </div>
 </div>
 <!-- / #intro -->

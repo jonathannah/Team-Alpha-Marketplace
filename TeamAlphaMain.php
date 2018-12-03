@@ -164,16 +164,21 @@
             $thumbnail = $curProduct->thumbnail;
             $mtkProductMap[$curProduct->name] = $prodUrl;
             $avgRating = $curProduct->averageRating * 20;
+            $viewProdUrl = "CallData.php?calltype=viewProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=".urlencode($prodUrl);
 
-            $ratingUrl = "#";
+            $rateProdUrl = "#";
 
-            if(User::currentToken() != null){
+            if(User::currentToken() != null && $curUsrv->rateProductUrl != ""){
                 $ratingUrl = urlencode($curUsrv->getRateProductUrl($curProduct->productCode, User::currentToken()));
+                $rateProdUrl = "CallData.php?calltype=rateProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=$ratingUrl";
+            }
+            else{
+                $rateProdUrl = $viewProdUrl;
             }
             ?>
             <div class="infiniteCell">
                 <div>
-                    <a href="CallData.php?calltype=rateProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $ratingUrl;?>"  title="Rate this product">
+                    <a href="<?php echo $rateProdUrl;?>"  title="Rate this product">
                         <div class="star-ratings-css" style="margin-bottom: 10px; width: 135px">
                             <div class="star-ratings-css-top" style="width: <?php echo $avgRating;?>%">
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -223,15 +228,20 @@
                     $mtkProductMap[$curProduct->name] = $prodUrl;
                     $avgRating = $curProduct->averageRating * 20;
 
-                    $ratingUrl = "#";
+                    $rateProdUrl = "#";
+                    $viewProdUrl = "CallData.php?calltype=viewProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=".urlencode($prodUrl);
 
-                    if(User::currentToken() != null){
+                    if(User::currentToken() != null && $curUsrv->rateProductUrl != ""){
                         $ratingUrl = urlencode($curUsrv->getRateProductUrl($curProduct->productCode, User::currentToken()));
+                        $rateProdUrl = "CallData.php?calltype=rateProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=$ratingUrl";
+                    }
+                    else{
+                        $rateProdUrl = $viewProdUrl;
                     }
                     ?>
                     <div class="infiniteCell">
                         <div>
-                            <a href="CallData.php?calltype=rateProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $ratingUrl;?>"  title="Rate this product">
+                            <a href="<?php echo $rateProdUrl;?>"  title="Rate this product">
                                 <div class="star-ratings-css" style="margin-bottom: 10px; width: 135px">
                                     <div class="star-ratings-css-top" style="width: <?php echo $avgRating;?>%">
                                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
