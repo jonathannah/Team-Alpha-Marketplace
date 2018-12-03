@@ -11,11 +11,15 @@ $userSearchMap = array();
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/TeamAlpha_style.css" type="text/css" />
+    <!--<link rel="stylesheet" href="css/TeamAlpha_style.css" type="text/css" />-->
     <link href="css/Header.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--Template-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script src="js/custom.js"></script>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -41,11 +45,10 @@ session_start();
 $_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
 session_write_close();
 ?>
-<div class="container">
-    <?php
-    include 'Header.php';
-    ?>
-</div>
+<?php include 'Header.php'; ?>
+
+<div id="content">
+  <div class="wrap clearFix">
 
 <?php
 $isAdmin = $_SESSION['admin'];
@@ -138,5 +141,11 @@ $dbh->close();
         });
     </script>
 <?php } ?>
+
+</div>
+</div>
+
+<?php include 'Footer.php'; ?>
+
 </body>
 </html>

@@ -17,22 +17,15 @@ $dbh_hdr = new DBHelper();
         </div>
 
         <div class="container">
-            <label for="uname"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="uname" required>
-
-            <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
-
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+        </div>
+        <div class="container" style="width: 70%; alignment: center">
+            <button type="submit" style="width: 25%; margin-right: 10px; float: left;">Login</button>
+            <button type="button" style="width: 25%; float: left" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span style="float: left; margin-left: 10px" class="psw">Forgot <a href="#">password?</a></span>
         </div>
 
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
     </form>
 </div>
 
@@ -40,11 +33,9 @@ $dbh_hdr = new DBHelper();
     <form action="Login2.php"  class="form-container">
         <h1>Login</h1>
 
-        <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+         <input type="password" placeholder="Enter Password" name="psw" required>
 
         <input type="submit" class="btn" value="Login">
         <input type="button" class="btn cancel" onclick="closeLoginForm()" value="Close">
@@ -72,41 +63,67 @@ $dbh_hdr = new DBHelper();
     }
 </script>
 
-<div class="form-popup" id="createAccountForm" align="center" width="30%">
-    <form action="CreateAccount.php" method="post" class="form-container" >
-        <h2>Login</h2>
-        <myDiv>
-            <input type="text" id="firstName" name="firstName" placeholder="first name" style="margin-right: 5px"/>
-            <input type="text" id="lastName" name="lastName" placeholder="last name"/>
-
-        </myDiv>
-        <myDiv>
-            <input type="text" id="email" name="email" placeholder="email"/>
-        </myDiv>
-        <myDiv>
-            <input type="text" id="addr" name="addr" placeholder="address"  style="margin-right: 5px"/>
-            <input type="text" id="apt" name="apt" placeholder="apt" style="width: 15%"/>
-        </myDiv>
-        <myDiv>
-            <input type="text" id="city" name="city" placeholder="city"  style="margin-right: 5px; width: 200px%;"/>
-            <input type="text" id="state" name="state" placeholder="state" style="width: 10%"/>
-            <input type="text" id="zip" name="zip" placeholder="zipcode" style="margin-left: 5px; width: 20%;"/>
-        </myDiv>
-        <myDiv>
-            <input type="text" id="phone" name="phone" placeholder="home phone"  style="margin-right: 5px"/>
-            <input type="text" id="cellPhone" name="cellPhone" placeholder="cell phone"/>
-        </myDiv>
-        <myDiv>
-            <input type="text" id="psw" name="psw" placeholder="password"  style="margin-right: 5px"/>
-            <input type="text" id="psw_c" name="psw_c" placeholder="re-enter password"/>
-        </myDiv>
-        <br>
-
-        <input type="submit" class="btn" value="Create Account">
-        <input type="button" class="btn cancel" style="height: " onclick="closeCreateAccountForm()" value="Close">
+<div class="form-popup" id="createAccountForm"  style="alignment: center; margin-left: 25%;">
+    <form action="CreateAccount.php" method="post" class="form-container" style="width: 50%">
+        <h2>Sign up for Team Alpha Market Account</h2>
+        <div style="margin-bottom: 5px">
+            <div style="float: left; width: 45%">
+                <input type="text" id="firstName" name="firstName" placeholder="first name" style="margin-right: 5px"/>
+            </div>
+            <div style="float: left; margin-left: 10px; width: 45%">
+                <input type="text" id="lastName" name="lastName" placeholder="last name"/>
+            </div>
+        </div>
+        <div  style="margin-bottom: 5px; clear: both;">
+            <div style="float: left; width: 92%">
+                <input type="text" id="email" name="email" placeholder="email"/>
+            </div>
+        </div>
+        <div style="margin-bottom: 5px; clear: both">
+            <div style="float: left; width: 70%">
+                <input type="text" id="addr" name="addr" placeholder="address"  style="margin-right: 5px"/>
+            </div>
+            <div style="float: left; margin-left: 10px; width: 20%">
+                <input type="text" id="apt" name="apt" placeholder="apt"/>
+            </div>
+        </div>
+        <div  style="margin-bottom: 5px; clear: both">
+            <div style="float: left; width: 50%">
+                <input type="text" id="city" name="city" placeholder="city"  style="margin-right: 5px;"/>
+            </div>
+            <div style="float: left; margin-left: 10px; width: 15%">
+                <input type="text" id="state" name="state" placeholder="state"/>
+            </div>
+            <div style="float: left; margin-left: 10px; width: 20%">
+                <input type="text" id="zip" name="zip" placeholder="zipcode" style="margin-left: 5px;"/>
+            </div>
+        </div >
+        <div  style="margin-bottom: 5px; clear: both">
+            <div style="float: left; width: 45%">
+                <input type="text" id="phone" name="phone" placeholder="home phone"  style="margin-right: 5px"/>
+            </div>
+            <div style="float: left; margin-left: 10px; width: 45%">
+                <input type="text" id="cellPhone" name="cellPhone" placeholder="cell phone"/>
+            </div>
+        </div>
+        <div  style="margin-bottom: 20px; clear: both">
+            <div style="float: left; width: 45%">
+                <input type="text" id="psw" name="psw" placeholder="password"  style="margin-right: 5px"/>
+            </div>
+            <div style="float: left; margin-left: 10px; width: 45%">
+                <input type="text" id="psw_c" name="psw_c" placeholder="re-enter password"/>
+            </div>
+        </div>
+        <div  style="clear: both">
+            <div style="float: ; width: 45%; alignment: center">
+                <input type="submit" class="btn" value="Create Account">
+            </div>
+            <div style="float: right; width: 45%">
+                <input type="button" class="btn cancel" onclick="closeCreateAccountForm()" value="Cancel">
+            </div>
+        </div>
     </form>
 </div>
-
 
 <script>
     function openCreateAccountForm() {
@@ -143,6 +160,7 @@ $dbh_hdr = new DBHelper();
       <div id="nav"> <strong>Navigation</strong>
         <ul>
           <li class="active"> <a href="TeamAlphaMain.php">Home</a> </li>
+          <li class="active"> <a href="TeamAlpha.php">Team</a> </li>
           <?php
             $user = User::fromCookie();
 

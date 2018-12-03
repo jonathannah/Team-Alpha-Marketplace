@@ -63,10 +63,10 @@ class TeamEndPoints
         array_push(TeamEndPoints::$userServers, new TeamEndPoints
         (
             "The Crypto Products",
-            "http://boostshore.com/wp",
+            "http://www.boostshore.com/wp",
             "http://www.boostshore.com/wp/curlproduct/",
             "",
-            ""
+            "http://www.boostshore.com/wp/topfive/"
         ));
     }
 }
