@@ -8,7 +8,7 @@ $dbh_hdr = new DBHelper();
 ?>
 
 
-<div id="id01" class="modal">
+<div class="form-popup" id="id01" class="modal">
 
     <form class="modal-content animate" action="Login2.php">
         <div class="imgcontainer">
@@ -115,10 +115,10 @@ $dbh_hdr = new DBHelper();
             </div>
         </div>
         <div  style="clear: both">
-            <div style="float: ; width: 45%; alignment: center">
+            <div style="float: left; width: 40%;">
                 <input type="submit" class="btn" value="Create Account">
             </div>
-            <div style="float: right; width: 45%">
+            <div style="float: right; width: 40%">
                 <input type="button" class="btn cancel" onclick="closeCreateAccountForm()" value="Cancel">
             </div>
         </div>
