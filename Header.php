@@ -163,6 +163,8 @@ $dbh_hdr = new DBHelper();
         <ul>
           <li class="active"> <a href="TeamAlphaMain.php">Home</a> </li>
           <li class="active"> <a href="TeamAlpha.php">Team</a> </li>
+          <li class="active"> <a href="Partner.php">Partners</a> </li>
+          <li class="active"> <a href="About.php">About</a> </li>
           <?php
             $user = User::fromCookie();
 
@@ -210,11 +212,12 @@ $dbh_hdr = new DBHelper();
             <a href="InteropShop.php" class="button">Shop</a>
         </div>
         <div style="float: left; margin-right: 10vw">
-            <a href="#" class="button">Partners</a>
+            <a href="Partner.php" class="button">Partners</a>
         </div>
         <div style="float: left">
-            <a href="#" class="button">About</a>
+            <a href="About.php" class="button">About</a>
         </div>
+    </div>
   </div>
 </div>
 <!-- / #intro -->

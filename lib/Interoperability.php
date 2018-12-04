@@ -68,6 +68,14 @@ class TeamEndPoints
             "",
             "http://www.boostshore.com/wp/topfive/"
         ));
+        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        (
+            "The Sichuan Impression",
+            "http://www.crazyspartancoder.com//main.html",
+            "http://www.crazyspartancoder.com/products.php",
+            "",
+            "http://www.crazyspartancoder.com/mostpopular.php"
+        ));
     }
 }
 
