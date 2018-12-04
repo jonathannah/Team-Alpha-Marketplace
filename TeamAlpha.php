@@ -9,6 +9,7 @@ include_once 'lib/Product.php';
 
 session_start();
 $_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
+$_SESSION['IS_SHOPPING_PAGE'] = false;
 
 session_write_close();
 

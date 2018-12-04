@@ -84,7 +84,7 @@ class TeamEndPoints
             "http://adiosray.me",
             "http://adiosray.me/api/product.php",
             "",
-            "http://adiosray.me/api/top5.php"
+            "http://adiosray.me/api/product.php?mostViewed&limit=5"
         ));
 
 

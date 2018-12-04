@@ -161,9 +161,10 @@ $dbh_hdr = new DBHelper();
     <nav>
       <div id="nav"> <strong>Navigation</strong>
         <ul>
-          <li class="active"> <a href="TeamAlphaMain.php">Home</a> </li>
-          <li class="active"> <a href="About.php">About</a> </li>
-          <li class="active"> <a href="TeamAlpha.php">Team / Partners</a> </li>
+            <li class="active"> <a href="TeamAlphaMain.php">Home</a> </li>
+            <li class="active"> <a href="InteropShop.php">Shop</a> </li>
+            <li class="active"> <a href="About.php">About</a> </li>
+            <li class="active"> <a href="TeamAlpha.php">Team / Partners</a> </li>
           <?php
             $user = User::fromCookie();
 
@@ -207,9 +208,15 @@ $dbh_hdr = new DBHelper();
             The best place for shopping!  Team Alpha Market vendors are highly rated, and all
             purchases carry the Team Alpha 100% Satisfaction Guarantee<sup><a href="TAMGarantee.html" style="color: white; text-decoration: none">*</a></sup>.
         </p>
-        <div style="float: left; margin-right: 10vw">
-            <a href="InteropShop.php" class="button">Shop</a>
-        </div>
+        <?php
+        if(!isset($_SESSION['IS_SHOPPING_PAGE']) || $_SESSION['IS_SHOPPING_PAGE'] != true){
+        ?>
+            <div style="float: left; margin-right: 10vw">
+                <a href="InteropShop.php" class="button">Shop</a>
+            </div>
+        <?php
+        }
+        ?>
     </div>
   </div>
 </div>

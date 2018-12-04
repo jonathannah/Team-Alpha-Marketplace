@@ -15,6 +15,7 @@ include_once 'lib/User.php';
 
 session_start();
 $_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
+$_SESSION['IS_SHOPPING_PAGE'] = false;
 
 session_write_close();
 
@@ -169,7 +170,7 @@ $curUToken = User::currentToken();
             $prodUrl = UrlHelper::addparameterIfSet($curProduct->clickTo, URL_PARAM_UTOKEN, User::currentToken());
             $prodUrl = urlencode($prodUrl);
 
-            $siteUrl = $curProductSet["siteUrl"];
+            $siteUrl = $curProductSet["server"]->$baseUrl;
 
             $thumbnail = $curProduct->thumbnail;
             $mtkProductMap[$curProduct->name] = $prodUrl;
