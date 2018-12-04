@@ -73,7 +73,10 @@ $userServers = TeamEndPoints::$userServers;
         <a href="http://www.crazyspartancoder.com//main.html"><h3>The Sichuan Impression</h3></a>
         <p>Sichuan Impression was founded by Yi Lai in 2018 as a Sichuan food restaurant. Today, Sichuan Impression has branches in Japan, the United States, South Korea, Singapore, China, Indonesia, Malaysia, Australia, and Thailand. Sichuan Impression gives people throughout the world the opportunity to experience a classic “taste of Sichuan.”</p>
       </div>
-      
+      <div class="col floatRight"> <img src="images/icon-awards.png" alt="" class="icon">
+        <a href="http://adiosray.me"><h3>Adiosray</h3></a>
+        <p>Adios is a start-up software development education company, with targeting at providing high-quality software developing tutorials and references on web development languages such as HTML, CSS, JavaScript, PHP, SQL, Python, jQuery, and Bootstrap, covering most aspects of web programming.</p>
+      </div>
     </div>
     </div>
 </div>
