@@ -16,7 +16,7 @@ $upwd = $_GET["psw"];
 
 if(isset($uname) AND isset($upwd)) {
     $query = "SELECT firstName, lastName, emailAddress, groupID, password FROM TeamAlphaMarket.User WHERE LOWER(emailAddress)=LOWER('$uname') ";
-    error_log($query);
+    //error_log($query);
     $result = $dbh->query($query);
 
     if($result->num_rows == 0){
@@ -49,7 +49,6 @@ if(isset($uname) AND isset($upwd)) {
     $pathParts = explode("/", $ref);
     $page = end($pathParts);
     $hdr = "Location: $page";
-
     header($hdr);
 ?>
 

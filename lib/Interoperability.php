@@ -35,8 +35,9 @@ class TeamEndPoints
 
     static function init()
     {
-        TeamEndPoints::$userServers = array();
-        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+
+        $tmp = array();
+        array_push($tmp, new TeamEndPoints
         (
             "Roncabeanz",
             "http://www.roncabeanz.com",
@@ -44,7 +45,7 @@ class TeamEndPoints
             "http://www.roncabeanz.com/Roncabeanz/RateProduct.php",
             "http://www.roncabeanz.com/Roncabeanz/MostPopularProducts.php?maxProd=5"
         ));
-        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        array_push( $tmp, new TeamEndPoints
         (
             "Think Full Stack",
             "http://www.thinkinfullstack.com",
@@ -52,7 +53,7 @@ class TeamEndPoints
             "",
             "http://www.thinkinfullstack.com/project/api/mostpopular.php?maxProd=5"
         ));
-        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        array_push($tmp, new TeamEndPoints
         (
             "The Whale Products",
             "https://www.yarnix.com",
@@ -60,7 +61,7 @@ class TeamEndPoints
             "",
             "https://yarnix.com/topfiveviewed/"
         ));
-        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        array_push($tmp, new TeamEndPoints
         (
             "The Crypto Products",
             "http://www.boostshore.com/wp",
@@ -68,6 +69,25 @@ class TeamEndPoints
             "",
             "http://www.boostshore.com/wp/topfive/"
         ));
+        array_push($tmp, new TeamEndPoints
+        (
+            "The Sichuan Impression",
+            "http://www.crazyspartancoder.com//main.html",
+            "http://www.crazyspartancoder.com/products.php",
+            "",
+            "http://www.crazyspartancoder.com/mostpopular.php"
+        ));
+
+        // now arrange in random order
+        TeamEndPoints::$userServers = array();
+
+        while(count($tmp) > 0){
+            $curSize = count($tmp);
+            $cur = rand(0, $curSize - 1);
+            array_push(TeamEndPoints::$userServers, $tmp[$cur]);
+            unset($tmp[$cur]);
+            $tmp = array_values($tmp);
+        }
     }
 }
 

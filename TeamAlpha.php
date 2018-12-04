@@ -68,6 +68,13 @@ $userServers = TeamEndPoints::$userServers;
         <p>Blockchain-based cryptocurrency whose cryptocoins in circulation are backed by an equivalent amount of traditional fiat currencies, like the dollar, the euro or the Japanese yen, which are held in a designated bank account. Digital currency that offers a high level of anonymity for users and their transactions.</p>
       </div>
     </div>
+    <div class="clearFix">
+      <div class="col floatLeft"> <img src="images/icon-awards.png" alt="" class="icon">
+        <a href="http://www.crazyspartancoder.com//main.html"><h3>The Sichuan Impression</h3></a>
+        <p>Sichuan Impression was founded by Yi Lai in 2018 as a Sichuan food restaurant. Today, Sichuan Impression has branches in Japan, the United States, South Korea, Singapore, China, Indonesia, Malaysia, Australia, and Thailand. Sichuan Impression gives people throughout the world the opportunity to experience a classic “taste of Sichuan.”</p>
+      </div>
+      
+    </div>
     </div>
 </div>
 

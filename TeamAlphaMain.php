@@ -1,5 +1,31 @@
 
 
+<?php
+const ROW_COUNT = 7;
+
+include_once 'lib/DBHelper.php';
+include_once 'lib/Cookies.php';
+include_once 'lib/RecentViews.php';
+include_once 'lib/TotalViews.php';
+include_once 'lib/Interoperability.php';
+include_once 'lib/CurlHelper.php';
+include_once 'lib/Product.php';
+include_once 'lib/UrlHelper.php';
+include_once 'lib/User.php';
+
+session_start();
+$_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
+
+session_write_close();
+
+$dbh = new DBHelper();
+
+$userServers = TeamEndPoints::$userServers;
+
+$curUToken = User::currentToken();
+
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -98,28 +124,7 @@
 </head>
 
 <body>
-    <?php
-        const ROW_COUNT = 7;
 
-        include_once 'lib/DBHelper.php';
-        include_once 'lib/Cookies.php';
-        include_once 'lib/RecentViews.php';
-        include_once 'lib/TotalViews.php';
-        include_once 'lib/Interoperability.php';
-        include_once 'lib/CurlHelper.php';
-        include_once 'lib/Product.php';
-        include_once 'lib/UrlHelper.php';
-
-        session_start();
-        $_SESSION['ref'] = $_SERVER['SCRIPT_NAME'];
-
-         session_write_close();
-
-        $dbh = new DBHelper();
-
-        $userServers = TeamEndPoints::$userServers;
-
-    ?>
 
     <?php include 'Header.php'; ?>
 
@@ -146,8 +151,12 @@
             }
 
             if(count($products) > 0){
+                $curProductSet = array();
+
                 $curProduct = Product::fromJSON($products[0]);
-                $topProducts[$curUsrv->name] = $curProduct;
+                $curProductSet["product"] = $curProduct;
+                $curProductSet["server"] = $curUsrv;
+                $topProducts[$curUsrv->name] =  $curProductSet;
             }
 
         }
@@ -155,11 +164,12 @@
     <div class="infiniteContainer">
     <?php
 
-        foreach ($topProducts as $curProduct){
+        foreach ($topProducts as $curProductSet){
+            $curProduct = $curProductSet["product"];
             $prodUrl = UrlHelper::addparameterIfSet($curProduct->clickTo, URL_PARAM_UTOKEN, User::currentToken());
             $prodUrl = urlencode($prodUrl);
 
-            $siteUrl = urlencode($curUsrv->baseUrl);
+            $siteUrl = $curProductSet["siteUrl"];
 
             $thumbnail = $curProduct->thumbnail;
             $mtkProductMap[$curProduct->name] = $prodUrl;
@@ -168,17 +178,19 @@
 
             $rateProdUrl = "#";
 
-            if(User::currentToken() != null && $curUsrv->rateProductUrl != ""){
-                $ratingUrl = urlencode($curUsrv->getRateProductUrl($curProduct->productCode, User::currentToken()));
+            if($curUToken  != null && $curProductSet["server"]->rateProductUrl != ""){
+                $ratingUrl = urlencode($curProductSet["server"]->getRateProductUrl($curProduct->productCode, $curUToken ));
                 $rateProdUrl = "CallData.php?calltype=rateProduct&productCode=$curProduct->productCode&siteUrl=$siteUrl&callto=$ratingUrl";
+                $rateProdText = "Rate this product";
             }
             else{
                 $rateProdUrl = $viewProdUrl;
+                $rateProdText = "";
             }
             ?>
             <div class="infiniteCell">
                 <div>
-                    <a href="<?php echo $rateProdUrl;?>"  title="Rate this product">
+                    <a href="<?php echo $rateProdUrl;?>"  title="<?php echo $rateProdText;?>">
                         <div class="star-ratings-css" style="margin-bottom: 10px; width: 135px">
                             <div class="star-ratings-css-top" style="width: <?php echo $avgRating;?>%">
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -186,7 +198,7 @@
                             <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                         </div>
                     </a>
-                    <a href= "CallData.php?calltype=viewProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $prodUrl; ?>">
+                    <a href= "<?php echo $viewProdUrl;?>">
                         <span class="data"> <img src="<?php echo $thumbnail; ?>" alt="<?php $curProduct->name ?>" style="width:200px"></span>
                         <span class="data"> <h3><?php echo $curProduct->name ?></h3></span>
                     </a>
@@ -249,7 +261,7 @@
                                     <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                 </div>
                             </a>
-                            <a href= "CallData.php?calltype=viewProduct&productCode=<?php echo $curProduct->productCode;?>&siteUrl=<?php echo $siteUrl;?>&callto=<?php echo $prodUrl; ?>">
+                            <a href= "<?php echo $viewProdUrl; ?>">
                                 <span class="data"> <img src="<?php echo $thumbnail; ?>" alt="<?php $curProduct->name ?>" style="width:200px"></span>
                                 <span class="data"> <h3><?php echo $curProduct->name ?></h3></span>
                             </a>
