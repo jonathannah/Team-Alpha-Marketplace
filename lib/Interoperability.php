@@ -76,6 +76,14 @@ class TeamEndPoints
             "",
             "http://www.crazyspartancoder.com/mostpopular.php"
         ));
+        array_push(TeamEndPoints::$userServers, new TeamEndPoints
+        (
+            "Adiosray",
+            "http://adiosray.me",
+            "http://adiosray.me/api/product.php",
+            "",
+            "http://adiosray.me/api/top5.php"
+        ));
     }
 }
 
