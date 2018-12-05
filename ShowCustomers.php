@@ -67,7 +67,7 @@ else{
         </div>
         <br>
     </div>
-    <h1>The Beanz Customers</h1>
+    <h1 style="color: black;">Team Alpha Market Customers</h1>
 
 <?php
 //Step2
